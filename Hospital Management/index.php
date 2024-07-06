@@ -1,3 +1,8 @@
+<?php
+  require_once 'config.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,30 +37,35 @@
         <li class="tab text-secondary" data-tab-target="#signin">SIGN IN</li>
       </ul>
       <div class="card py-3 px-4 bg-white tab-content">
-        <form action="" id="signup" data-tab-content class="active">
+        <form action="<?php $_SERVER["PHP_SELF"]?>" id="signup" data-tab-content class="active">
 
-          <div class="nextActive" id="userInfo" data-next-content>
+          <div class="nextActive firstForm" id="userInfo" data-next-content>
             <div class="inputField">
               <label for="username">Username</label>
-              <input type="text" name="username" id="username" />
+              <input type="text" name="username" id="username" required/>
+              <div class="errorMsg"></div>
             </div>
             <div class="inputField">
               <label for="email">Email</label>
-              <input type="email" name="email" id="email" />
+              <input type="email" name="email" id="email" required/>
+              <div class="errorMsg"></div>
             </div>
             <div class="inputField">
               <label for="phone">Phone No.</label>
-              <input type="tel" name="phone" id="phone" />
+              <input type="tel" name="phone" id="phone" required/>
+              <div class="errorMsg"></div>
             </div>
             <div class="inputField">
               <label for="password">Password</label>
-              <input type="password" name="password" id="password" />
+              <input type="password" name="password" id="password" required/>
+              <div class="errorMsg"></div>
             </div>
             <div class="inputField">
               <label for="confirmPass">Confirm Password</label>
-              <input type="password" name="confirmPass" id="confirmPass" />
+              <input type="password" name="confirmPass" id="confirmPass" required/>
+              <div class="errorMsg"></div>
             </div>
-            <input type="button" data-next-target="#position" value="Next" class="btn">
+            <input type="button" data-next-target="#position" value="Next" class="btn" id="next">
           </div>
 
           <div id="position" data-next-content>
@@ -85,7 +95,7 @@
                     <input type="radio" name="doctor" class="radio" id="admin" value="Admin">
                 </div>
               </label>
-            <input type="submit" value="Save" class="btn">
+            <input type="submit" value="Save" id="register" class="btn">
           </div>
         </form>
         
@@ -105,5 +115,37 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function (){
+          $('#register').click(function(e){
+            
+            var checkValid = this.form.checkValidity();
+             
+            if(checkValid){
+              e.preventDefault();
+              
+              var username = $('#username').val();
+              var email = $('#email').val();
+              var phone = $('#phone').val();
+              var password = $('#password').val();
+              var confirmPass = $('#confirmPass').val();
+              var radio = $('.radio:checked').val();
+
+              $.ajax({
+                url:"process.php",
+                method:"POST",
+                data: {username:username,email:email,phone:phone,password:password,confirmPass:confirmPass,radio:radio},
+                success: function(data){
+                  console.log(data)
+                }
+              })
+            }else{
+              console.log("Please Input")
+            }
+             
+          })
+        })
+    </script>
   </body>
 </html>

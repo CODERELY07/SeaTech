@@ -89,6 +89,9 @@ body {
   background-position: 98% 15%;
   background-color: var(--color-primary);
 }
+.radio{
+  display: none;
+}
 .box h4 {
   font-size: 20px;
   margin-left: 20px;
