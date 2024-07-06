@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Splash Screen Animated Intro</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  
+  <header>
+    <div><img src="img/hospital.png" alt="Logo" width="80px"></div>
+  </header>
+  <div class="bg">
+    
+    <div class="description">
+        <div><h4 class="logo-name">MELC HOSPITAL</h4></div>
+    </div>
+
+  <script>
+    setTimeout(function() {
+      document.querySelector('.bg').style.display = 'none';
+    }, 1000); // Adjust the delay time (in milliseconds) as needed
+    setTimeout(function() {
+      document.querySelector('.description').style.display = 'none';
+    }, 700); // Adjust the delay time (in milliseconds) as needed
+  </script>
+</body>
+</html>

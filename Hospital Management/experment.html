@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkbox Experment</title>
+    <style>
+        input[type="radio"]{
+           
+        }
+        .box{
+            border: 1px solid black;
+            cursor: pointer;
+            padding: 20px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <label for="doctor">
+    <div class="card pointer box">
+        <span><i class="fa-solid fa-user-doctor"></i></span>
+        <h4>Doctor</h4>
+        <input type="radio" name="doctor" class="radio" id="doctor" value="Doctor">
+    </div>
+    </label>
+    <label for="patient">
+    <div class="card pointer box">
+        <span><i class="fa-solid fa-user-patient"></i></span>
+        <h4>patient</h4>
+        <input type="radio" name="doctor" class="radio" id="patient" value="Patient">
+    </div>
+    </label>
+    <label for="admin">
+    <div class="card pointer box">
+        <span><i class="fa-solid fa-user-admin"></i></span>
+        <h4>admin</h4>
+        <input type="radio" name="doctor" class="radio" id="admin" value="Admin">
+    </div>
+    </label>
+    
+    <script>
+        const radios = document.querySelectorAll('.radio');
+       
+        radios.forEach((radio)=>{
+            radio.addEventListener("click",()=>{
+                radios.forEach(r=>{
+                    r.closest('div').classList.remove('radioActive');
+                });
+                radio.closest('div').classList.add('radioActive');
+            })
+         
+        
+        })
+   
+        function atLeastOneRadio() {
+            return ($('input[type=radio]:checked').size() > 0);
+        }
+    </script>
+</body>
+</html>

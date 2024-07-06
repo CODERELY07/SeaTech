@@ -1,0 +1,51 @@
+/* colors */
+/* F5F7F8 , F4CE14, 379777, 45474B*/
+:root{
+    --primary-color:#F5F7F8;
+    --yellow-color:#F4CE14;
+    --green-color:#379777;
+    --dark-color:#45474B;
+}
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+  }
+  header{
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  .bg{
+    background-color: #379777;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    animation: down 1s;
+    width: 100%;
+  }
+  .description{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  @keyframes down {
+    0%{
+        height: 100vh;
+    }
+    30%{
+        height: 70vh;
+    }
+    60%{
+        height: 40vh;
+    }
+    100%{
+        height: 0vh;
+    }
+  }
